@@ -1,0 +1,32 @@
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Recipe Name</label>
+      <input type="text" formControlName="name" id="name" placeholder="Enter recipe name">
+    </div>
+  
+    <div>
+      <label for="description">Recipe Description</label>
+      <textarea formControlName="description" id="description" placeholder="Enter recipe description"></textarea>
+    </div>
+  
+    <div>
+      <label for="instructions">Recipe Instructions</label>
+      <textarea formControlName="instructions" id="instructions" placeholder="Enter recipe instructions"></textarea>
+    </div>
+  
+    <div>
+      <label for="ingredients">Recipe Ingredients</label>
+      <textarea formControlName="ingredients" id="ingredients" placeholder="Enter recipe ingredients"></textarea>
+    </div>
+  
+    <div>
+      <label for="imageUrl">Recipe Image URL</label>
+      <input type="text" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL">
+      <div *ngIf="recipeForm.get('imageUrl')?.errors?.['invalidUrl']">
+        Please enter a valid image URL.
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="!recipeForm.valid">Update Recipe</button>
+  </form>
+  

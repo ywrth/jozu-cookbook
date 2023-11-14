@@ -1,0 +1,7 @@
+<div *ngFor="let recipe of recipes | async">
+    <h3>{{ recipe.name }}</h3>
+    <img [src]="recipe.imageUrl" alt="Image of {{ recipe.name }}" onerror="this.style.display='none'">
+    <p>{{ recipe.description }}</p>
+    <p>{{ recipe.ingredients }}</p>
+    <a [routerLink]="['/edit-recipe', recipe.id]" class="edit-link">Edit</a>
+  </div>
