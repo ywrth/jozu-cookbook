@@ -1,7 +1,22 @@
-<div *ngFor="let recipe of recipes | async">
-    <h3>{{ recipe.name }}</h3>
-    <img [src]="recipe.imageUrl" alt="Image of {{ recipe.name }}" onerror="this.style.display='none'">
-    <p>{{ recipe.description }}</p>
-    <p>{{ recipe.ingredients }}</p>
-    <a [routerLink]="['/edit-recipe', recipe.id]" class="edit-link">Edit</a>
+<!-- Recipe List Grid -->
+<div *ngIf="!selectedRecipe" class="grid-container">
+  <div *ngFor="let recipe of recipes | async" class="grid-item">
+    <mat-card (click)="openRecipe(recipe)">
+      <img mat-card-image [src]="recipe.imageUrl" alt="Image of {{ recipe.name }}">
+      <mat-card-title>{{ recipe.name }}</mat-card-title>
+    </mat-card>
   </div>
+</div>
+
+<!-- Full Recipe Details -->
+<div *ngIf="selectedRecipe" class="recipe-details">
+  <h2>{{ selectedRecipe.name }}</h2>
+  <!-- Remove the image from the details section -->
+  <p>{{ selectedRecipe.description }}</p>
+  <p>{{ selectedRecipe.ingredients }}</p>
+  <p>{{ selectedRecipe.instructions }}</p>
+  
+  <!-- Navigate to the "edit-recipe" component when the "Edit" button is clicked -->
+  <button mat-button (click)="editRecipe(selectedRecipe)">Edit</button>
+  <button mat-button (click)="selectedRecipe = null">Close</button>
+</div>

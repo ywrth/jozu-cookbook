@@ -1,30 +1,29 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="name">Recipe Name</label>
-<input type="text" formControlName="name" id="name" placeholder="Recipe Name">
-    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Recipe Name</mat-label>
+        <input matInput formControlName="name" placeholder="Recipe Name">
+      </mat-form-field>
 
-    <div>
-        <label for="description">Recipe Description</label>
-        <textarea formControlName="description" id="description" placeholder="Recipe Description"></textarea>
-    </div>
+ <mat-form-field appearance="fill">
+    <mat-label>Recipe Description</mat-label>
+    <input matInput formControlName="description" placeholder="Recipe Description">
+ </mat-form-field>
 
-    <div>
-        <label for="instructions">Recipe Instructions</label>
-        <textarea formControlName="instructions" id="instructions" placeholder="Recipe Instructions"></textarea>
-    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Recipe Instructions</mat-label>
+        <input matInput formControlName="instructions" placeholder="Recipe Instructions">
+        </mat-form-field>
 
-    <div>
-        <label for="ingredients">Recipe Ingredients</label>
-        <textarea formControlName="ingredients" id="ingredients" placeholder="Recipe Ingredients"></textarea>
-    </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Recipe Ingredients</mat-label>
+            <input matInput formControlName="ingredients" placeholder="Recipe Ingredients">
+            </mat-form-field>
 
-    <div>
-        <label for="imageUrl">Image URL</label>
-        <input type="text" formControlName="imageUrl" id="imageUrl" placeholder="Image URL">
-        <div *ngIf="recipeForm.get('imageUrl')?.errors?.['invalidUrl']">
-            Please enter a valid image URL.
-          </div>
-      </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Image URL</mat-label>
+                <input matInput formControlName="imageUrl" placeholder="Image URL">
+                </mat-form-field>
 
-    <button type="submit" [disabled]="!recipeForm.valid">Add Recipe</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!recipeForm.valid">Add Recipe</button>
+            
+            </form>

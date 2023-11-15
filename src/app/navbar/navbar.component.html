@@ -1,5 +1,7 @@
-<nav class="navbar">
-    <a class="navbar-brand" href="/">My Cookbook</a>
-   <li><a routerLink="/recipes"> Recipes</a></li>
-   <li><a routerLink="/add-recipe">Add Recipe</a></li>
-</nav>
+<mat-toolbar color="primary">
+    <a mat-button [routerLink]="['/']">Jozu Cookbook</a>
+    <span class="spacer"></span> <!-- This is for spacing -->
+    <a mat-button [routerLink]="['/recipes']">Recipes</a>
+    <a mat-button [routerLink]="['/add-recipe']">Add Recipe</a>
+  </mat-toolbar>
+  

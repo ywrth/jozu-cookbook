@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from './material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,11 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {FirestoreModule} from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+
+import { QuillModule } from 'ngx-quill'
+
 
 @NgModule({
   declarations: [
@@ -22,13 +28,18 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     AddRecipeComponent,
     RecipeDetailComponent,
     EditRecipeComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
    FirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    CommonModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
