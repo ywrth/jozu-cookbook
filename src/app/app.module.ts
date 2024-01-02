@@ -17,18 +17,23 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
-import { QuillModule } from 'ngx-quill'
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { RecipeModalComponent } from './recipe-modal/recipe-modal.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
     NavbarComponent,
     RecipeListComponent,
     AddRecipeComponent,
     RecipeDetailComponent,
     EditRecipeComponent,
-    
+    AddRecipeComponent,
+    EditRecipeComponent,
+    RecipeModalComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,9 +44,9 @@ import { QuillModule } from 'ngx-quill'
     BrowserAnimationsModule,
     MaterialModule,
     CommonModule,
-    QuillModule.forRoot()
+EditorModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

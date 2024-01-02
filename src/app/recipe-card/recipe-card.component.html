@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let recipe of recipes">
+            <div class="card" [style.background-image]="'url(' + recipe.imageUrl + ')'">
+                <h3>{{ recipe.name }}</h3>
+                <p>{{ recipe.description }}</p>
+                <a [routerLink]="['/recipe-details', recipe.id]" class="btn btn-outline-success btn-sm">Read More</a>
+                <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

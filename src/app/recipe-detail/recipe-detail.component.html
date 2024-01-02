@@ -1,1 +1,5 @@
-<p>recipe-detail works!</p>
+<div *ngIf="recipe">
+  <h2>{{ recipe.name }}</h2>
+  <p>{{ recipe.details }}</p> <!-- Use a <p> or appropriate HTML element for details -->
+  <!-- Add other fields as needed -->
+</div>

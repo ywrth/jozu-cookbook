@@ -1,29 +1,25 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-        <mat-label>Recipe Name</mat-label>
-        <input matInput formControlName="name" placeholder="Recipe Name">
-      </mat-form-field>
 
- <mat-form-field appearance="fill">
-    <mat-label>Recipe Description</mat-label>
-    <input matInput formControlName="description" placeholder="Recipe Description">
- </mat-form-field>
+  <div>
+    <input type="text" formControlName="name" id="name" placeholder="Enter recipe name">
+  </div>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Recipe Instructions</mat-label>
-        <input matInput formControlName="instructions" placeholder="Recipe Instructions">
-        </mat-form-field>
+  <div>
+    <!-- TinyMCE Editor with API Key -->
+    <editor formControlName="details" apiKey="gioa3daqcl5074u60ll57jjpe44minrpck44fu1t5x580zty
 
-        <mat-form-field appearance="fill">
-            <mat-label>Recipe Ingredients</mat-label>
-            <input matInput formControlName="ingredients" placeholder="Recipe Ingredients">
-            </mat-form-field>
+    " [init]="{
+      plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+    }"></editor>
+  </div>
 
-            <mat-form-field appearance="fill">
-                <mat-label>Image URL</mat-label>
-                <input matInput formControlName="imageUrl" placeholder="Image URL">
-                </mat-form-field>
+  <div>
+    <input type="text" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL">
+    <div *ngIf="recipeForm.get('imageUrl')?.errors?.['invalidUrl']">
+      Please enter a valid image URL.
+    </div>
+  </div>
 
-                <button mat-raised-button color="primary" type="submit" [disabled]="!recipeForm.valid">Add Recipe</button>
-            
-            </form>
+  <button type="submit" [disabled]="!recipeForm.valid">Add Recipe</button>
+</form>

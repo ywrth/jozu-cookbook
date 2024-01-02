@@ -1,22 +1,24 @@
-<!-- Recipe List Grid -->
-<div *ngIf="!selectedRecipe" class="grid-container">
-  <div *ngFor="let recipe of recipes | async" class="grid-item">
-    <mat-card (click)="openRecipe(recipe)">
-      <img mat-card-image [src]="recipe.imageUrl" alt="Image of {{ recipe.name }}">
-      <mat-card-title>{{ recipe.name }}</mat-card-title>
-    </mat-card>
+<div id="cards_landscape_wrap-2">
+  <div class="container">
+    <div class="row">
+      <!-- Iterate over recipes -->
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" *ngFor="let recipe of recipes">
+        <div class="card-flyer" (click)="openModal(recipe)">
+          <div class="text-box">
+            <div class="image-box">
+              <img [src]="recipe.imageUrl" alt="" />
+            </div>
+            <div class="text-container">
+              <h6>{{ recipe.name }}</h6>
+              <p>{{ recipe.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Full Recipe Details -->
-<div *ngIf="selectedRecipe" class="recipe-details">
-  <h2>{{ selectedRecipe.name }}</h2>
-  <!-- Remove the image from the details section -->
-  <p>{{ selectedRecipe.description }}</p>
-  <p>{{ selectedRecipe.ingredients }}</p>
-  <p>{{ selectedRecipe.instructions }}</p>
-  
-  <!-- Navigate to the "edit-recipe" component when the "Edit" button is clicked -->
-  <button mat-button (click)="editRecipe(selectedRecipe)">Edit</button>
-  <button mat-button (click)="selectedRecipe = null">Close</button>
-</div>
+<app-recipe-modal [showModal]="showModal" [selectedRecipe]="selectedRecipe"
+  (closeModalEvent)="handleModalClose($event)">
+</app-recipe-modal>
