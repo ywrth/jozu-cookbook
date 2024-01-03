@@ -7,8 +7,12 @@
         <div class="modal-text-container">
             <h2>{{ selectedRecipe?.name }}</h2>
             <div [innerHTML]="selectedRecipe?.details"></div>
-            <!-- Add the edit recipe component with the selectedRecipe input -->
-            <button class="btn btn-green"><app-edit-recipe [selectedRecipe]="selectedRecipe"></app-edit-recipe></button>
+
+            <!-- Edit Recipe Component -->
+            <app-edit-recipe [selectedRecipe]="selectedRecipe" (updateSuccess)="onRecipeUpdated()">
+            </app-edit-recipe>
+
+            <!-- Delete Recipe Button -->
             <button class="btn btn-danger" (click)="deleteRecipe(selectedRecipe?.id)">Delete Recipe</button>
         </div>
     </div>

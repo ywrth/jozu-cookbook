@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { AbstractControl } from '@angular/forms';
@@ -10,6 +10,8 @@ import { AbstractControl } from '@angular/forms';
 })
 export class EditRecipeComponent implements OnInit {
   @Input() selectedRecipe: any;
+  @Output() updateSuccess = new EventEmitter<void>(); // New output event
+
   recipeForm: FormGroup;
 
   editorConfig = {
@@ -44,11 +46,11 @@ export class EditRecipeComponent implements OnInit {
       };
 
       this.recipeService.updateRecipe(this.selectedRecipe.id, updatedRecipe).then(() => {
-        console.log('Recipe updated!');
+        alert('Recipe updated successfully!');
+        this.updateSuccess.emit(); // Emit the success event
       });
     }
   }
-
   imageUrlValidator(control: AbstractControl): { [key: string]: any } | null {
     const urlRegex = /(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg))/i;
     const valid = urlRegex.test(control.value);

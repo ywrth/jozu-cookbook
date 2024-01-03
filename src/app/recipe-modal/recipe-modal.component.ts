@@ -10,13 +10,19 @@ export class RecipeModalComponent {
   @Input() showModal: boolean = false;
   @Input() selectedRecipe: any;
   @Output() closeModalEvent = new EventEmitter<boolean>();
-  @Output() recipeDeletedEvent = new EventEmitter<string>(); // Event emitter for recipe deletion
+  @Output() recipeUpdatedEvent = new EventEmitter<boolean>(); // Event for recipe update
+  @Output() recipeDeletedEvent = new EventEmitter<string>(); // Event for recipe deletion
 
-  constructor(private recipeService: RecipeService) {} // Inject RecipeService
+  constructor(private recipeService: RecipeService) {}
+
+  onRecipeUpdated() {
+    this.closeModal();
+    this.recipeUpdatedEvent.emit(true); // Emit an event to notify successful update
+  }
 
   closeModal() {
     this.showModal = false;
-    this.closeModalEvent.emit(false); // Emitting a boolean value
+    this.closeModalEvent.emit(false); // Emitting a boolean value to close the modal
   }
 
   deleteRecipe(recipeId: string | undefined) {
