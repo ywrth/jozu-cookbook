@@ -21,6 +21,13 @@ export class AddRecipeComponent implements OnInit {
   public Editor = ClassicEditor;
   recipeForm: FormGroup;
 
+  editorConfig = {
+    apiKey: 'gioa3daqcl5074u60ll57jjpe44minrpck44fu1t5x580zty', // Replace with your TinyMCE API key
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
+  };
+
+
   constructor(private fb: FormBuilder, private recipeService: RecipeService) {
     this.recipeForm = this.fb.group({
       name: ['', Validators.required],

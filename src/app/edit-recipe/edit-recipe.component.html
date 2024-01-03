@@ -1,6 +1,6 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <div>
-    <input type="text" formControlName="name" id="name" placeholder="Enter recipe name">
+    <input type="text" formControlName="name" id="name" placeholder="Enter recipe name" class="large-input">
   </div>
 
   <div>
@@ -9,7 +9,7 @@
 
   <div>
     <label for="imageUrl">Recipe Image URL</label>
-    <input type="text" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL">
+    <input type="text" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL" class="large-input">
     <div *ngIf="recipeForm.get('imageUrl')?.errors?.['invalidUrl']">
       Please enter a valid image URL.
     </div>

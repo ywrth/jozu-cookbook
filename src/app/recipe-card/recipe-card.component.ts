@@ -10,4 +10,4 @@ import { CommonModule } from '@angular/common';
 
 export class RecipeCardComponent {
   @Input() recipe: any; // Define the 'recipe' property
-}
+} 

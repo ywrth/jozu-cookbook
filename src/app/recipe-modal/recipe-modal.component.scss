@@ -41,24 +41,31 @@
   .modal-text-container {
     h2 {
       margin-top: 0;
+      font-size: 24px; /* Adjust the font size as needed */
+    }
+  
+    p {
+      /* Style the paragraph text within the modal */
+      font-size: 16px; /* Adjust the font size as needed */
+      line-height: 1.5; /* Adjust line height for readability */
     }
   
     ul {
-      list-style-type: disc; /* Use disc for bullet points */
-      padding-left: 40px; /* Adjust padding to align with text */
-      margin: 0; /* Reset default margin */
+      /* Style the unordered list (bullet points) */
+      list-style-type: disc;
+      padding-left: 20px; /* Adjust padding for bullet points alignment */
+    }
   
-      li {
-        margin-bottom: 10px;
-        text-align: left;
-      }
+    li {
+      /* Style individual list items */
+      margin-bottom: 10px;
     }
   
     img {
+      /* Style images within the modal text */
       max-width: 100%;
       height: auto;
       display: block;
       margin: 10px auto;
     }
   }
-  

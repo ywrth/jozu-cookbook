@@ -26,8 +26,14 @@ export class RecipeService {
     return this.firestore.collection('recipes').doc(id).update(recipeData);
 }
 
-deleteRecipe(id: string): Promise<void> {
-  return this.firestore.collection('recipes').doc(id).delete();
+  async deleteRecipe(id: string): Promise<void> {
+  console.log(`Deleting recipe with id: ${id}`);
+  try {
+    await this.firestore.collection('recipes').doc(id).delete();
+    console.log(`Recipe with id: ${id} deleted successfully`);
+  } catch (error) {
+    console.error(`Error deleting recipe with id: ${id}:`, error);
+  }
 }
 
 getAllRecipes(): Observable<any[]> {

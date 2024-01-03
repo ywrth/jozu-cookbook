@@ -1,7 +1,6 @@
 /*----  Main Style  ----*/
 #cards_landscape_wrap-2{
   text-align: center;
-  background: #F7F7F7;
 }
 #cards_landscape_wrap-2 .container{
   padding-top: 80px; 
@@ -79,5 +78,13 @@
   text-transform: uppercase;
   font-family: 'Roboto Black', sans-serif;
   letter-spacing: 1px;
-  color: #00acc1;
+  color: #c7b4db;
+}
+
+.wave-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1; 
 }

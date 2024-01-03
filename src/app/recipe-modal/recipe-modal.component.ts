@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-modal',
@@ -8,11 +9,31 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class RecipeModalComponent {
   @Input() showModal: boolean = false;
   @Input() selectedRecipe: any;
-
   @Output() closeModalEvent = new EventEmitter<boolean>();
+  @Output() recipeDeletedEvent = new EventEmitter<string>(); // Event emitter for recipe deletion
+
+  constructor(private recipeService: RecipeService) {} // Inject RecipeService
 
   closeModal() {
     this.showModal = false;
     this.closeModalEvent.emit(false); // Emitting a boolean value
+  }
+
+  deleteRecipe(recipeId: string | undefined) {
+    if (!recipeId) {
+        return; // Handle the case when recipeId is undefined or null
+    }
+
+    // Add confirmation dialog (optional)
+    const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
+    if (confirmDelete) {
+      this.recipeService.deleteRecipe(recipeId).then(() => {
+        this.recipeDeletedEvent.emit(recipeId); // Emit the deleted recipe ID
+        this.closeModal();
+      }).catch(error => {
+        console.error('Error deleting recipe:', error);
+        // Handle error (e.g., show an error message)
+      });
+    }
   }
 }

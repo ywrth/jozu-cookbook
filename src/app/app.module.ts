@@ -44,7 +44,8 @@ import { RecipeModalComponent } from './recipe-modal/recipe-modal.component';
     BrowserAnimationsModule,
     MaterialModule,
     CommonModule,
-EditorModule
+EditorModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
