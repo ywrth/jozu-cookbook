@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class RecipeModalComponent {
   @Output() closeModalEvent = new EventEmitter<boolean>();
   @Output() recipeUpdatedEvent = new EventEmitter<boolean>(); // Event for recipe update
   @Output() recipeDeletedEvent = new EventEmitter<string>(); // Event for recipe deletion
+  @ViewChild('editor') editorElement: ElementRef | undefined;
 
   showEditForm = false; 
 
@@ -19,6 +20,14 @@ export class RecipeModalComponent {
 
   toggleEdit() {
     this.showEditForm = !this.showEditForm;
+    if (this.showEditForm) {
+      // Use setTimeout to wait for the DOM to update
+      setTimeout(() => {
+        if (this.editorElement) {
+          this.editorElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
   }
 
   onRecipeUpdated() {

@@ -9,7 +9,7 @@
                 <h2>{{ selectedRecipe?.name }}</h2>
                 <div [innerHTML]="selectedRecipe?.details"></div>
                 <button class="edit-button" (click)="toggleEdit()">Edit Recipe</button>
-                <div *ngIf="showEditForm">
+                <div #editor *ngIf="showEditForm">
                     <app-edit-recipe [selectedRecipe]="selectedRecipe" (updateSuccess)="onRecipeUpdated()"
                         (deletionSuccess)="closeModal()"></app-edit-recipe>
                 </div>
