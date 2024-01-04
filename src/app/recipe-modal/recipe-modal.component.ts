@@ -60,7 +60,6 @@ export class RecipeModalComponent {
     this.showModal = false;
     this.showEditForm = false; // Reset the edit form state
     this.closeModalEvent.emit(false);
-    window.history.back();
   }
 
 
