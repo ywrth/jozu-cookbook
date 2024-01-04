@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, HostListener } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Router } from '@angular/router';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-recipe-modal',
@@ -27,7 +28,7 @@ export class RecipeModalComponent {
 
   showEditForm = false;
 
-  constructor(private recipeService: RecipeService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private recipeService: RecipeService, private router: Router, private cdr: ChangeDetectorRef, private modalService: ModalService) {}
   toggleEdit() {
     this.showEditForm = !this.showEditForm;
 
@@ -60,6 +61,7 @@ export class RecipeModalComponent {
     this.showModal = false;
     this.showEditForm = false; // Reset the edit form state
     this.closeModalEvent.emit(false);
+    this.modalService.closeAddRecipeModal();
   }
 
 
