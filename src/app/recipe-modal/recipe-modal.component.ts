@@ -13,9 +13,16 @@ export class RecipeModalComponent {
   @Output() recipeUpdatedEvent = new EventEmitter<boolean>(); // Event for recipe update
   @Output() recipeDeletedEvent = new EventEmitter<string>(); // Event for recipe deletion
 
+  showEditForm = false; 
+
   constructor(private recipeService: RecipeService) {}
 
+  toggleEdit() {
+    this.showEditForm = !this.showEditForm;
+  }
+
   onRecipeUpdated() {
+    this.showEditForm = false; // Hide the edit form on update
     this.closeModal();
     this.recipeUpdatedEvent.emit(true); // Emit an event to notify successful update
   }

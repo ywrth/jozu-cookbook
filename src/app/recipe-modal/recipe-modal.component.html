@@ -8,14 +8,11 @@
             <div class="modal-text-container">
                 <h2>{{ selectedRecipe?.name }}</h2>
                 <div [innerHTML]="selectedRecipe?.details"></div>
-
-                <!-- Edit Recipe Component -->
-                <app-edit-recipe [selectedRecipe]="selectedRecipe" (updateSuccess)="onRecipeUpdated()"
-                    (deletionSuccess)="closeModal()"></app-edit-recipe>
-
-
-
+                <button class="edit-button" (click)="toggleEdit()">Edit Recipe</button>
+                <div *ngIf="showEditForm">
+                    <app-edit-recipe [selectedRecipe]="selectedRecipe" (updateSuccess)="onRecipeUpdated()"
+                        (deletionSuccess)="closeModal()"></app-edit-recipe>
+                </div>
             </div>
         </div>
     </div>
-</div>
