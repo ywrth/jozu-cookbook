@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import anime from 'animejs/lib/anime.es.js';
 
+
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',

@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/jozu/browser/browser",
+            "outputPath": "dist/jozu",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
