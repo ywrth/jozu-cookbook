@@ -92,8 +92,16 @@
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
+  .modal {
+    padding: 0;
+    align-items: flex-start; /* Align to the top for full height usage */
+  }
+
   .modal-container {
-    padding: 15px;
+    height: 100%; /* Full screen height */
+    width: 100%; /* Full screen width */
+    max-width: none; /* Override any max-width */
+    border-radius: 0; /* Optional: remove border radius for full width and height */
   }
 
   .modal-content {
@@ -110,6 +118,8 @@
 
   .close-button {
     font-size: 1.2rem;
+    top: 10px; /* Adjust close button position */
+    right: 10px;
   }
 
   .text-area {
