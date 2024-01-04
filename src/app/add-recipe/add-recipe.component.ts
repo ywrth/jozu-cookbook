@@ -28,6 +28,7 @@ export class AddRecipeComponent implements OnInit {
     toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
   };
 
+  
   constructor(
     private fb: FormBuilder,
     private recipeService: RecipeService,
@@ -40,7 +41,11 @@ export class AddRecipeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+
+  
 
   onSubmit() {
     if (this.recipeForm.valid) {
