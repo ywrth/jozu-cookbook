@@ -64,7 +64,6 @@ export class EditRecipeComponent implements OnInit {
     const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
     if (confirmDelete && this.selectedRecipe?.id) {
       this.recipeService.deleteRecipe(this.selectedRecipe.id).then(() => {
-        alert('Recipe deleted successfully!');
         this.deletionSuccess.emit(); // Emit event after successful deletion
       }).catch(error => {
         console.error('Error deleting recipe:', error);
