@@ -4,7 +4,7 @@
   </div>
 
   <div>
-    <editor formControlName="details"></editor>
+    <editor formControlName="details" class="text-area"></editor>
   </div>
 
   <div>
@@ -17,7 +17,6 @@
 
   <div class="form-buttons">
     <button type="submit" [disabled]="!recipeForm.valid" class="update-button">Update Recipe</button>
-    <button type="button" class="btn btn-danger" (click)="deleteRecipe()">Delete Recipe</button>
-
+    <button type="button" class="delete-button" (click)="deleteRecipe()">Delete Recipe</button>
   </div>
 </form>
