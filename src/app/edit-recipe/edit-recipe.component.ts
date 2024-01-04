@@ -10,7 +10,10 @@ import { AbstractControl } from '@angular/forms';
 })
 export class EditRecipeComponent implements OnInit {
   @Input() selectedRecipe: any;
-  @Output() updateSuccess = new EventEmitter<void>(); // New output event
+  @Output() updateSuccess = new EventEmitter<void>();
+  @Output() deleteSuccess = new EventEmitter<void>(); // New output event for delete success
+  @Output() deletionSuccess = new EventEmitter<void>();
+
 
   recipeForm: FormGroup;
 
@@ -56,4 +59,19 @@ export class EditRecipeComponent implements OnInit {
     const valid = urlRegex.test(control.value);
     return valid ? null : { 'invalidUrl': { value: control.value } };
   }
+
+  deleteRecipe() {
+    const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
+    if (confirmDelete && this.selectedRecipe?.id) {
+      this.recipeService.deleteRecipe(this.selectedRecipe.id).then(() => {
+        alert('Recipe deleted successfully!');
+        this.deletionSuccess.emit(); // Emit event after successful deletion
+      }).catch(error => {
+        console.error('Error deleting recipe:', error);
+        // Handle error (e.g., show an error message)
+      });
+    }
+  }
 }
+
+

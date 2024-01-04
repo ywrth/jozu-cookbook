@@ -1,48 +1,31 @@
-/*----  Main Style  ----*/
-#cards_landscape_wrap-2{
+/* Main Style */
+
+#cards_landscape_wrap-2 {
   text-align: center;
+  background-color: #FFFFFF;
+  position: relative;
 }
-#cards_landscape_wrap-2 .container{
-  padding-top: 80px; 
+
+#cards_landscape_wrap-2 .container {
+  padding-top: 80px;
   padding-bottom: 100px;
 }
-#cards_landscape_wrap-2 a{
+
+#cards_landscape_wrap-2 a {
   text-decoration: none;
   outline: none;
 }
+
+#cards_landscape_wrap-2 .wave-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0; /* Animation is behind everything */
+}
+
 #cards_landscape_wrap-2 .card-flyer {
   border-radius: 5px;
-}
-
-
-#cards_landscape_wrap-2 .card-flyer .image-box {
-  background: #ffffff;
-  overflow: hidden;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
-  border-radius: 5px;
-  height: 200px; /* Fixed height */
-}
-#cards_landscape_wrap-2 .card-flyer .image-box img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Adjusts image size to cover the area */
-  transition: all .9s ease; 
-}
-#cards_landscape_wrap-2 .card-flyer:hover .image-box img{
-  opacity: 0.7;
-  -webkit-transform:scale(1.15);
-  -moz-transform:scale(1.15);
-  -ms-transform:scale(1.15);
-  -o-transform:scale(1.15);
-  transform:scale(1.15);
-}
-#cards_landscape_wrap-2 .card-flyer .text-box{
-  text-align: center;
-}
-#cards_landscape_wrap-2 .card-flyer .text-box .text-container{
-  padding: 30px 18px;
-}
-#cards_landscape_wrap-2 .card-flyer{
   background: #FFFFFF;
   margin-top: 50px;
   -webkit-transition: all 0.2s ease-in;
@@ -51,8 +34,62 @@
   -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+  position: relative;
+  z-index: 2; /* Recipe cards are on top of the animation */
+  overflow: hidden; /* Ensure contents don't overflow */
+
 }
-#cards_landscape_wrap-2 .card-flyer:hover{
+
+#cards_landscape_wrap-2 .card-flyer .image-box .title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: #ffffff; /* White text color */
+  text-align: center;
+  padding: 10px 0;
+  transform: translateY(100%); /* Initially hide the title */
+  transition: transform 0.3s ease-in-out;
+}
+
+#cards_landscape_wrap-2 .card-flyer:hover .image-box .title-overlay {
+  transform: translateY(0); /* Show the title on hover */
+}
+
+#cards_landscape_wrap-2 .card-flyer .image-box {
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
+  border-radius: 5px;
+  height: 200px; /* Fixed height */
+}
+
+#cards_landscape_wrap-2 .card-flyer .image-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Adjusts image size to cover the area */
+  transition: all .9s ease;
+}
+
+#cards_landscape_wrap-2 .card-flyer:hover .image-box img {
+  opacity: 0.7;
+  -webkit-transform: scale(1.15);
+  -moz-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  -o-transform: scale(1.15);
+  transform: scale(1.15);
+}
+
+#cards_landscape_wrap-2 .card-flyer .text-box {
+  text-align: center;
+}
+
+#cards_landscape_wrap-2 .card-flyer .text-box .text-container {
+  padding: 30px 18px;
+}
+
+#cards_landscape_wrap-2 .card-flyer:hover {
   background: #fff;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
   -webkit-transition: all 0.2s ease-in;
@@ -62,23 +99,25 @@
   transition: all 0.2s ease-in;
   margin-top: 50px;
 }
-#cards_landscape_wrap-2 .card-flyer .text-box p{
+
+#cards_landscape_wrap-2 .card-flyer .text-box p {
   margin-top: 10px;
   margin-bottom: 0px;
-  padding-bottom: 0px; 
+  padding-bottom: 0px;
   font-size: 14px;
   letter-spacing: 1px;
   color: #000000;
 }
-#cards_landscape_wrap-2 .card-flyer .text-box h6{
+
+#cards_landscape_wrap-2 .card-flyer .text-box h6 {
   margin-top: 0px;
-  margin-bottom: 4px; 
+  margin-bottom: 4px;
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Black', sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 1px;
-  color: #c7b4db;
+  color: #970f5e;
 }
 
 .wave-top {
@@ -86,5 +125,18 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: -1; 
+  z-index: 0; /* Set a lower z-index for the animation */
+}
+
+.wave-top path {
+  animation: colorChange 10s infinite; /* Define the duration and repeat the animation */
+}
+
+/* Keyframes for the color change animation */
+@keyframes colorChange {
+  0%, 100% { fill: #E5FCFF; } /* Start and end at the same color */
+  20%  { fill: #ABDAFC; }
+  40%  { fill: #ACACDE; }
+  60%  { fill: #C490D1; }
+  80% { fill: #7e5ad2; }
 }

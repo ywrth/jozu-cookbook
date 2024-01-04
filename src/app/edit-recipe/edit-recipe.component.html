@@ -15,5 +15,9 @@
     </div>
   </div>
 
-  <button type="submit" [disabled]="!recipeForm.valid">Update Recipe</button>
+  <div class="form-buttons">
+    <button type="submit" [disabled]="!recipeForm.valid" class="update-button">Update Recipe</button>
+    <button type="button" class="btn btn-danger" (click)="deleteRecipe()">Delete Recipe</button>
+
+  </div>
 </form>

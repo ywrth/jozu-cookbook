@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Router } from '@angular/router'; // Import Router
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { AbstractControl } from '@angular/forms';
 
@@ -27,8 +28,11 @@ export class AddRecipeComponent implements OnInit {
     toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
   };
 
-
-  constructor(private fb: FormBuilder, private recipeService: RecipeService) {
+  constructor(
+    private fb: FormBuilder,
+    private recipeService: RecipeService,
+    private router: Router // Inject Router
+  ) {
     this.recipeForm = this.fb.group({
       name: ['', Validators.required],
       details: ['', Validators.required], // Combined field
@@ -43,6 +47,9 @@ export class AddRecipeComponent implements OnInit {
       this.recipeService.addRecipe(this.recipeForm.value).then(() => {
         console.log('Recipe added!');
         this.recipeForm.reset();
+
+        // Navigate back to the recipes page after adding the recipe
+        this.router.navigate(['/recipes']); // Adjust the route path as needed
       });
     }
   }

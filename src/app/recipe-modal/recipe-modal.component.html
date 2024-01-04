@@ -1,19 +1,21 @@
-<div class="modal" *ngIf="showModal">
-    <div class="modal-content">
+<div class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">
+    <div class="modal-container">
         <span class="close-button" (click)="closeModal()">&times;</span>
-        <div class="modal-image-container">
-            <img [src]="selectedRecipe?.imageUrl" alt="Recipe Image">
-        </div>
-        <div class="modal-text-container">
-            <h2>{{ selectedRecipe?.name }}</h2>
-            <div [innerHTML]="selectedRecipe?.details"></div>
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <img [src]="selectedRecipe?.imageUrl" alt="Recipe Image">
+            </div>
+            <div class="modal-text-container">
+                <h2>{{ selectedRecipe?.name }}</h2>
+                <div [innerHTML]="selectedRecipe?.details"></div>
 
-            <!-- Edit Recipe Component -->
-            <app-edit-recipe [selectedRecipe]="selectedRecipe" (updateSuccess)="onRecipeUpdated()">
-            </app-edit-recipe>
+                <!-- Edit Recipe Component -->
+                <app-edit-recipe [selectedRecipe]="selectedRecipe" (updateSuccess)="onRecipeUpdated()"
+                    (deletionSuccess)="closeModal()"></app-edit-recipe>
 
-            <!-- Delete Recipe Button -->
-            <button class="btn btn-danger" (click)="deleteRecipe(selectedRecipe?.id)">Delete Recipe</button>
+
+
+            </div>
         </div>
     </div>
 </div>

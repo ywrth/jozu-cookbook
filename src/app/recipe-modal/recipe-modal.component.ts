@@ -25,6 +25,12 @@ export class RecipeModalComponent {
     this.closeModalEvent.emit(false); // Emitting a boolean value to close the modal
   }
 
+  onBackdropClick(event: MouseEvent) {
+    if (event.target === event.currentTarget) { // Check if the click is on the backdrop
+      this.closeModal();
+    }
+  }
+
   deleteRecipe(recipeId: string | undefined) {
     if (!recipeId) {
         return; // Handle the case when recipeId is undefined or null
