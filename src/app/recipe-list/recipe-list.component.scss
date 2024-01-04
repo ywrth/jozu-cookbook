@@ -1,3 +1,35 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+}
+
+.footer {
+  background-color: #ffffff;
+  text-align: center;
+  color: #333;
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
 /* Main Style */
 
 #cards_landscape_wrap-2 {
@@ -28,16 +60,11 @@
   border-radius: 5px;
   background: #FFFFFF;
   margin-top: 50px;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -ms-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
   position: relative;
-  z-index: 2; /* Recipe cards are on top of the animation */
-  overflow: hidden; /* Ensure contents don't overflow */
-
+  z-index: 2;
+  overflow: hidden;
 }
 
 #cards_landscape_wrap-2 .card-flyer .image-box .title-overlay {
@@ -62,13 +89,14 @@
   overflow: hidden;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
   border-radius: 5px;
-  height: 200px; /* Fixed height */
+  height: 200px; /* Set a fixed height */
 }
 
 #cards_landscape_wrap-2 .card-flyer .image-box img {
   width: 100%;
-  height: auto;
-  object-fit: cover; /* Adjusts image size to cover the area */
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the area */
+  object-position: center; /* Align the image nicely */
   transition: all .9s ease;
 }
 
@@ -86,7 +114,7 @@
 }
 
 #cards_landscape_wrap-2 .card-flyer .text-box .text-container {
-  padding: 30px 18px;
+  padding: 15px; /* Reduced padding */
 }
 
 #cards_landscape_wrap-2 .card-flyer:hover {
@@ -125,19 +153,43 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 0; /* Set a lower z-index for the animation */
+  z-index: 0;
 }
 
 .wave-top path {
-  animation: colorChange 10s infinite; /* Define the duration and repeat the animation */
+  animation: colorChange 10s infinite;
 }
 
 /* Keyframes for the color change animation */
 @keyframes colorChange {
-  0%, 100% { fill: #E5FCFF; } /* Start and end at the same color */
-  20%  { fill: #ABDAFC; }
-  40%  { fill: #ACACDE; }
-  60%  { fill: #C490D1; }
+  0%, 100% { fill: #E5FCFF; }
+  20% { fill: #ABDAFC; }
+  40% { fill: #ACACDE; }
+  60% { fill: #C490D1; }
   80% { fill: #7e5ad2; }
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%; /* Increase width on smaller screens */
+  }
+
+  /* Reduce margin top on smaller screens for card-flyer */
+  #cards_landscape_wrap-2 .card-flyer {
+    margin-top: 20px;
+  }
+
+  /* Adjust font sizes for smaller screens */
+  #cards_landscape_wrap-2 .card-flyer .text-box p {
+    font-size: 12px;
+  }
+
+  #cards_landscape_wrap-2 .card-flyer .text-box h6 {
+    font-size: 16px;
+  }
+}
+
+
+
+
 

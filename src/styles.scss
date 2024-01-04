@@ -1,3 +1,10 @@
+/* Reset default margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -9,11 +16,20 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
+  min-height: 100vh;
+  font-size: 16px; /* Base font size */
+  line-height: 1.5; /* Base line height */
+}
+
+/* Adjust font size and line height for smaller screens */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
 }
 
 .content-wrapper {
-  flex: 1; /* This makes the content wrapper expand to fill available space */
+  flex: 1;
 }
 
 .footer {
@@ -22,6 +38,7 @@ body {
   color: #333;
   font-size: 20px;
   padding: 20px 0;
+  font-size: x-small;
 }
 
 .container {
@@ -30,50 +47,51 @@ body {
   padding: 20px;
 }
 
-/* Hoverable Effects */
+/* Hoverable Effects - Modified for better touch interactions */
 .hoverable {
   display: inline-block;
-  backface-visibility: hidden;
   vertical-align: middle;
   position: relative;
-  box-shadow: 0 0 1px rgba(0,0,0,0);
-  transform: translateZ(0);
-  transition-duration: .3s;
-  transition-property: transform;
+  transition: transform 0.3s;
 }
 
 .hoverable:before {
+  content: '';
   position: absolute;
   pointer-events: none;
   z-index: -1;
-  content: '';
   top: 100%;
   left: 5%;
   height: 10px;
   width: 90%;
   opacity: 0;
   background: radial-gradient(ellipse at center, rgba(148, 172, 159, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
-  transition-duration: 0.3s;
-  transition-property: transform, opacity;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
-.hoverable:hover, .hoverable:active, .hoverable:focus {
+.hoverable:hover,
+.hoverable:active,
+.hoverable:focus {
   transform: translateY(-5px);
 }
 
-.hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before {
+.hoverable:hover:before,
+.hoverable:active:before,
+.hoverable:focus:before {
   opacity: 1;
   transform: translateY(-5px);
 }
 
 /* Footer Styles */
-  .footer {
-    background-color: #ffffff;
-    text-align: center;
-    color: #333;
-    font-size: 20px;
-    padding: 20px 0; /* Add padding for spacing */
-    font-size: x-small;
+.footer {
+  background-color: #ffffff;
+  text-align: center;
+  color: #333;
+  font-size: 20px;
+  padding: 20px 0;
+  /* Adjust font size and padding for smaller screens if needed */
+  font-size: x-small;
+  padding: 10px 0;
 }
 
 /* Bounce Animation */
@@ -86,27 +104,32 @@ body {
   animation-duration: 2s;
 }
 
-/* Media Query for Navigation Bar */
-@media (min-width: 768px) {
+/* Media Query for Navigation Bar - Adjusted for better mobile display */
+@media (max-width: 768px) {
   .navbar {
-      text-align: center !important;
-      float: none;
-      display: inline-block;
+    text-align: center !important;
+    float: none;
+    display: block; /* Change to block for mobile */
+  }
+
+  /* Add mobile-specific navigation styles here */
+  nav {
+    background: none !important;
+    text-transform: uppercase;
+  }
+
+  nav li {
+    margin: 1em; /* Adjust margin for smaller screens */
+  }
+
+  nav a {
+    transition: 0.5s color ease-in-out;
   }
 }
 
 /* Additional Styles */
 .page-title {
-  opacity: .75 !important;
+  opacity: 0.75 !important;
 }
 
-nav {
-  background: none !important;
-  text-transform: uppercase;
-  li {
-      margin: 3em;
-      a {
-          transition: .5s color ease-in-out;
-      }
-  }
-}
+/* If you have more styles, adjust them as needed for responsiveness */

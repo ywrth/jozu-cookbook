@@ -1,36 +1,86 @@
 .navbar {
-    position: relative; /* Add this to establish a stacking context */
-    z-index: 3; /* Set a higher z-index for the navbar */
+    position: relative; /* Establish a stacking context */
+    z-index: 3; /* Higher z-index for the navbar */
+  }
+  .btn-primary {
+    background-color: #E200F7;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #450EFF;
+    border-color: #b77df5;
+  }
+  .btn-primary:focus {
+    background-color: #b77df5;
+    border-color: #b77df5;
   }
   
-.btn-primary {
+  .btn-success {
     background-color: #E200F7;
     color: #fff;
-    &:hover {
-        background-color: #450EFF;
-        border-color: #b77df5;
-    }
-    &:focus {
-        background-color: #b77df5;
-        border-color: #b77df5;
-    }
-}
-
-.btn-success {
-    background-color: #E200F7;
-    color: #fff;
-    &:hover {
-        background-color: #450EFF;
-        border-color: #376969;
-    }
-    &:focus {
-        background-color: #b77df5;
-        border-color: #b77df5;
-    
-    }
-}
-
-.active-link {
-    // Style for active link, e.g., change color or hide the button
-    display: none; // This will hide the button
   }
+  .btn-success:hover {
+    background-color: #450EFF;
+    border-color: #376969;
+  }
+  .btn-success:focus {
+    background-color: #b77df5;
+    border-color: #b77df5;
+  }
+  
+  .active-link {
+    /* Style for active link, e.g., change color or hide the button */
+    display: none; /* This will hide the button */
+  }
+  
+  /* Responsive adjustments for navbar */
+  @media (max-width: 768px) {
+    .navbar {
+      /* Adjust navbar styles for mobile devices */
+      /* Example: Change layout, increase padding, etc. */
+    }
+  
+    .btn-primary, .btn-success {
+      /* Adjust button sizes for better touch accessibility */
+      padding: 12px 18px;
+      font-size: 16px; /* Larger font size for buttons */
+    }
+  
+    /* Hide or re-style active links as needed */
+    .active-link {
+      /* Adjustments for active link on mobile */
+    }
+
+    body {
+        font-size: 16px; /* Larger base font size for readability */
+      }
+
+      .container {
+        width: 95%; /* More width for container */
+        padding: 10px; /* Reduced padding */
+      }
+
+.hamburger-menu {
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin-bottom: 5px;
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Show hamburger menu */
+  }
+
+  .nav-items {
+    display: none; /* Hide navigation items */
+    /* Style for dropdown */
+  }
+  }
+}

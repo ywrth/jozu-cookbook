@@ -1,12 +1,14 @@
 <nav class="navbar navbar-inverse navbar-expand-lg">
-  <div class="container-fluid">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}">
-        <a class="nav-link btn btn-primary" [routerLink]="['/recipes']">Recipes</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}">
-        <a class="nav-link btn btn-success" [routerLink]="['/add-recipe']">Add Recipe</a>
-      </li>
-    </ul>
+  <div class="hamburger-menu">
+    <div class="container-fluid">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link btn btn-primary" [routerLink]="['/recipes']">Recipes</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link btn btn-success" [routerLink]="['/add-recipe']">Add Recipe</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
