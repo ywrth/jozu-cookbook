@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, HostListener } from '@angular/core';
 import { RecipeService } from '../recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-modal',
@@ -7,17 +8,26 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-modal.component.scss']
 })
 export class RecipeModalComponent {
-  @Input() showModal: boolean = false;
+  @Input() set showModal(value: boolean) {
+    if (value && !this._showModal) {
+      window.history.pushState(null, '', window.location.href); // Add history entry only when opening
+    }
+    this._showModal = value;
+  }
+  get showModal(): boolean {
+    return this._showModal;
+  }
+  private _showModal = false;
+
   @Input() selectedRecipe: any;
   @Output() closeModalEvent = new EventEmitter<boolean>();
-  @Output() recipeUpdatedEvent = new EventEmitter<boolean>(); // Event for recipe update
-  @Output() recipeDeletedEvent = new EventEmitter<string>(); // Event for recipe deletion
-  @ViewChild('editor') editorElement: ElementRef | undefined;
+  @Output() recipeUpdatedEvent = new EventEmitter<boolean>(); 
+  @Output() recipeDeletedEvent = new EventEmitter<string>();
+  @ViewChild('editor') editorElement!: ElementRef;
 
-  showEditForm = false; 
+  showEditForm = false;
 
-  constructor(private recipeService: RecipeService, private cdr: ChangeDetectorRef) {}
-
+  constructor(private recipeService: RecipeService, private router: Router, private cdr: ChangeDetectorRef) {}
   toggleEdit() {
     this.showEditForm = !this.showEditForm;
 
@@ -41,10 +51,18 @@ export class RecipeModalComponent {
     this.recipeUpdatedEvent.emit(true); // Emit an event to notify successful update
   }
 
+  @HostListener('window:popstate', ['$event'])
+  onPopState() {
+    this.closeModal();
+  }
+
   closeModal() {
     this.showModal = false;
-    this.closeModalEvent.emit(false); // Emitting a boolean value to close the modal
+    this.showEditForm = false; // Reset the edit form state
+    this.closeModalEvent.emit(false);
+    window.history.back();
   }
+
 
   onBackdropClick(event: MouseEvent) {
     if (event.target === event.currentTarget) { // Check if the click is on the backdrop
