@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -16,19 +16,24 @@ export class RecipeModalComponent {
 
   showEditForm = false; 
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService, private cdr: ChangeDetectorRef) {}
 
   toggleEdit() {
     this.showEditForm = !this.showEditForm;
+
     if (this.showEditForm) {
-      // Use setTimeout to wait for the DOM to update
+      // Manually trigger change detection
+      this.cdr.detectChanges();
+
+      // Then scroll into view
       setTimeout(() => {
         if (this.editorElement) {
-          this.editorElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
+          this.editorElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      });
+      }, 100); // You can adjust this timeout as needed
     }
   }
+
 
   onRecipeUpdated() {
     this.showEditForm = false; // Hide the edit form on update
