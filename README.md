@@ -4,24 +4,78 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To start the development server:
+
+1. Run ng serve.
+2. Navigate to http://localhost:4200/.
+3. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To generate new components or other Angular elements:
+
+```console
+ng generate component component-name
+# Or
+ng generate directive|pipe|service|class|guard|interface|enum|module
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To build the project:
 
+```console
+ng build
+```
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To execute unit tests via [Karma](https://karma-runner.github.io).
+
+```console
+ng test
+```
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To execute end-to-end tests:
 
-## Further help
+```console
+ng e2e
+```
+Note: You need to first add a package that implements end-to-end testing capabilities.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Features
+
+1. Responsive Design: Utilizes Angular Material and Bootstrap.
+2. Recipe Management: Users can add, view, edit, and delete recipes.
+3. Rich Text Editing: Integrates TinyMCE for detailed recipe descriptions.
+4. Animation: Includes smooth animations using Anime.js.
+
+
+Clone the repository:
+
+
+```console
+git clone https://github.com/ywrth/jozu-cookbook
+```
+
+Install dependencies:
+
+```console
+cd jozu-cookbook
+npm install```
+
+Start the application:
+
+```console
+ng serve
+```
+## Technologies Used
+
+Angular 17
+Angular Material and CDK 16
+Bootstrap 5
+Firebase and AngularFire 16
+TinyMCE
+Anime.js
+jQuery
