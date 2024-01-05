@@ -7,10 +7,10 @@ import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 import {EditRecipeComponent} from './edit-recipe/edit-recipe.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'recipes', pathMatch: 'full' },
-  { path: 'add-recipe', component: AddRecipeComponent },
+  { path: '', component: RecipeListComponent }, // Default route
   { path: 'recipes', component: RecipeListComponent },
-  { path: 'edit-recipe/:id', component: EditRecipeComponent },
+  { path: 'add-recipe', component: AddRecipeComponent },
+  // ... other routes ...
 ];
 
 @NgModule({
