@@ -59,17 +59,17 @@ Clone the repository:
 git clone https://github.com/ywrth/jozu-cookbook
 ```
 
-Install dependencies:
+Install dependencies amd start the application
 
 ```console
 cd jozu-cookbook
 npm install```
 
-Start the application:
-
 ```console
 ng serve
 ```
+
+
 ## Technologies Used
 
 Angular 17
