@@ -1,3 +1,19 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<!-- Loading Indicator -->
+<div *ngIf="isLoading" class="loading-indicator">
+    <div class="spinner"></div>
+</div>
+<div *ngIf="!isLoading">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+    <div class="floating-buttons" *ngIf="isAuthenticated">
+        <a id="recipesButton" class="btn btn-primary" *ngIf="currentUrl === '/add-recipe'"
+            (click)="onRecipesClick()">Back</a>
+        <button id="logoutButton" class="btn btn-danger" (click)="onLogoutClick()"> <i class="fas fa-sign-out-alt"></i>
+            Logout </button>
+        <a id="addRecipeButton" class="btn btn-success" *ngIf="currentUrl === '/recipes'" (click)="onAddRecipeClick()">
+            <i class="fas fa-plus"></i>
+            Add</a>
 
+
+    </div>
+</div>

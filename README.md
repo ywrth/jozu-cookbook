@@ -78,4 +78,4 @@ Bootstrap 5
 Firebase and AngularFire 16
 TinyMCE
 Anime.js
-jQuery
+

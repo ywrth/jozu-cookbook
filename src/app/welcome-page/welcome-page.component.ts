@@ -1,43 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../recipe.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import anime from 'animejs/lib/anime.es.js';
 
-
 @Component({
-  selector: 'app-recipe-list',
-  templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.scss']
+  selector: 'app-welcome-page',
+  templateUrl: './welcome-page.component.html',
+  styleUrls: ['./welcome-page.component.scss'] // Corrected from 'styleUrl' to 'styleUrls'
 })
+export class WelcomePageComponent implements OnInit {
+  email = '';
+  password = '';
+  showEmailPasswordLogin = false; // Add this property
 
-export class RecipeListComponent implements OnInit {
-  recipes: any[] = [];
-  showModal: boolean = false;
-  selectedRecipe: any;
-  groupedRecipes: any[][] = []; // Initialize as an empty array
-
-
-  constructor(private recipeService: RecipeService) {}
+  
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loadRecipes();
-    this.initWaveAnimation();
-  }
-
-  loadRecipes() {
-    this.recipeService.getAllRecipes().subscribe(data => {
-      console.log('Recipes loaded:', data); // Debugging
-      this.recipes = data;
-      this.groupRecipesIntoRows();
-    });
-  }
-
-  groupRecipesIntoRows() {
-    const itemsPerRow = 4; // Number of items per row
-    for (let i = 0; i < this.recipes.length; i += itemsPerRow) {
-      this.groupedRecipes.push(this.recipes.slice(i, i + itemsPerRow));
-      console.log('Grouped recipes:', this.groupedRecipes); // Debugging
-
-    }
+    this.initWaveAnimation(); // Call the animation initialization when the component is initialized
   }
 
   initWaveAnimation() {
@@ -60,14 +41,27 @@ export class RecipeListComponent implements OnInit {
     });
   }
 
-  openModal(recipe: any) {
-    this.selectedRecipe = recipe;
-    this.showModal = true;
+  toggleEmailPasswordLogin() {
+    this.showEmailPasswordLogin = !this.showEmailPasswordLogin; // Toggle the visibility of email/password login
   }
-
-  handleModalClose(event: boolean) {
-    this.showModal = event;
-  }
-
-    }
   
+  onGoogleLogin() {
+    this.authService.googleSignIn().then(success => {
+      if (success) {
+        this.router.navigate(['/recipes']);
+      } else {
+        console.log('Login failed');
+      }
+    }).catch(error => {
+      console.error('Login error:', error);
+    });
+  }
+
+  onLogin(email: string, password: string) {
+    this.authService.signInWithEmail(email, password).then(result => {
+      // Handle successful login
+    }).catch(error => {
+      // Handle login errors
+    });
+  }
+}

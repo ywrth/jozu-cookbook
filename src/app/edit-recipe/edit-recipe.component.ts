@@ -19,7 +19,7 @@ export class EditRecipeComponent implements OnInit {
 
   editorConfig = {
     apiKey: 'gioa3daqcl5074u60ll57jjpe44minrpck44fu1t5x580zty', // Replace with your TinyMCE API key
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount autoresize',
     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
   };
 
@@ -55,7 +55,7 @@ export class EditRecipeComponent implements OnInit {
     }
   }
   imageUrlValidator(control: AbstractControl): { [key: string]: any } | null {
-    const urlRegex = /(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg))/i;
+    const urlRegex = /(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg|webp)(\?.*)?$)/i;
     const valid = urlRegex.test(control.value);
     return valid ? null : { 'invalidUrl': { value: control.value } };
   }

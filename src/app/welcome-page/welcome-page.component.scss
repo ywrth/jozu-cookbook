@@ -1,0 +1,52 @@
+/* Define the colorChange keyframes only once */
+@keyframes colorChange {
+    0%, 100% { fill: #E5FCFF; }
+    20% { fill: #ABDAFC; }
+    40% { fill: #ACACDE; }
+    60% { fill: #C490D1; }
+    80% { fill: #7e5ad2; }
+  }
+  
+  /* Rest of your CSS rules */
+  .gradient-background {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    overflow: hidden;
+  }
+  
+  .wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .gray-box {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hoverable-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    font-size: larger;
+  }
+  
+  .hoverable-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  .hoverable-container img {
+    transition: filter 0.3s, transform 0.3s;
+  }
+  
+  .hoverable-container:hover img {
+    filter: brightness(1.2); /* Adjust brightness on hover */
+    transform: translateY(-5px);
+  }
+  

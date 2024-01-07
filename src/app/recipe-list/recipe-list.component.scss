@@ -16,26 +16,22 @@ body {
   flex: 1;
 }
 
-.footer {
-  background-color: #ffffff;
-  text-align: center;
-  color: #333;
-  padding: 20px 0;
-  font-size: 20px;
-}
 
 .container {
-  width: 80%;
-  margin: auto;
-  padding: 20px;
+  max-width: 1400px; /* Maximum width */
+  width: 95%; /* Adjust width on smaller screens */
+  margin: 0 auto; /* Center align */
+  padding: 20px; /* Add padding */
 }
 
 /* Main Style */
 
 #cards_landscape_wrap-2 {
   text-align: center;
-  background-color: #FFFFFF;
+  background: transparent; /* Or whatever you want for the recipe list */
   position: relative;
+  z-index: 10; /* On top of the gradient background and wave */
+  top: 100px;
 }
 
 #cards_landscape_wrap-2 .container {
@@ -58,7 +54,7 @@ body {
 
 #cards_landscape_wrap-2 .card-flyer {
   border-radius: 5px;
-  background: #FFFFFF;
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
   margin-top: 50px;
   transition: all 0.2s ease-in;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
@@ -89,7 +85,11 @@ body {
   overflow: hidden;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
   border-radius: 5px;
-  height: 200px; /* Set a fixed height */
+  height: 30vw; /* Square size relative to viewport width */
+  width: 30vw; /* Square size relative to viewport width */
+  max-height: 500px; /* Optional max size */
+  max-width: 700px; /* Optional max size */
+
 }
 
 #cards_landscape_wrap-2 .card-flyer .image-box img {
@@ -172,6 +172,7 @@ body {
 @media (max-width: 768px) {
   .container {
     width: 95%; /* Increase width on smaller screens */
+    margin: 0 auto;
   }
 
   /* Reduce margin top on smaller screens for card-flyer */
@@ -187,7 +188,13 @@ body {
   #cards_landscape_wrap-2 .card-flyer .text-box h6 {
     font-size: 16px;
   }
-}
+ 
+  #cards_landscape_wrap-2 .card-flyer .image-box {
+    height: auto;
+    aspect-ratio: 16 / 9; /* Adjust aspect ratio as needed */
+  }
+  }
+
 
 
 

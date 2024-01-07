@@ -1,0 +1,33 @@
+<div class="gradient-background">
+    <svg class="wave-top" viewBox="0 0 1200 600">
+        <defs>
+            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#10617b;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#3742fa;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path fill="url(#waveGradient)" fill-rule="evenodd" clip-rule="evenodd"
+            d="M0 108.306L50 114.323C100 120.34 200 132.374 300 168.476C400 204.578 500 264.749 600 246.698C700 228.647 800 132.374 900 108.306C1000 84.2382 1100 132.374 1150 156.442L1200 180.51V-8.5451e-06H1150C1100 -8.5451e-06 1000 -8.5451e-06 900 -8.5451e-06C800 -8.5451e-06 700 -8.5451e-06 600 -8.5451e-06C500 -8.5451e-06 400 -8.5451e-06 300 -8.5451e-06C200 -8.5451e-06 100 -8.5451e-06 50 -8.5451e-06H0V108.306Z" />
+    </svg>
+
+    <section class="gray-box">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <!-- Wrap the image and text in a container for click event -->
+                                <div class="hoverable-container" (click)="onGoogleLogin()">
+                                    <img class="white-svg" src="/assets/welcome.svg" alt="Welcome Icon" width="300"
+                                        height="300">
+                                    <p class="mb-0">LET'S GET COOKIN'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

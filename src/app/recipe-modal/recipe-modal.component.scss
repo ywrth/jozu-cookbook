@@ -37,6 +37,43 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Adjust margin as needed */
+}
+
+.edit-button {
+  background-color: #007bff; /* Example: Bootstrap primary color */
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem; /* Adjust font size as needed */
+  width: 100px; /* Adjust button width */
+}
+
+.edit-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.delete-button {
+  background-color: #dc3545; /* Example: Bootstrap danger color */
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem; /* Adjust font size as needed */
+  width: 80px; /* Adjust button width */
+}
+
+.delete-button:hover {
+  background-color: #bb2d3b; /* Darker shade on hover */
+}
+
 .modal-image-container {
   max-height: 200px;
   overflow: hidden;
@@ -127,18 +164,4 @@
   }
 }
 
-.edit-button {
-  background-color: #007bff; /* Example: Bootstrap primary color */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 15px; /* Space from the recipe details */
-}
-
-.edit-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
 

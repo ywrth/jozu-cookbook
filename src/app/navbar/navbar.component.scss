@@ -1,86 +1,29 @@
 .navbar {
-    position: relative; /* Establish a stacking context */
-    z-index: 3; /* Higher z-index for the navbar */
-  }
-  .btn-primary {
-    background-color: #E200F7;
-    color: #fff;
-  }
-  .btn-primary:hover {
-    background-color: #450EFF;
-    border-color: #b77df5;
-  }
-  .btn-primary:focus {
-    background-color: #b77df5;
-    border-color: #b77df5;
-  }
-  
-  .btn-success {
-    background-color: #E200F7;
-    color: #fff;
-  }
-  .btn-success:hover {
-    background-color: #450EFF;
-    border-color: #376969;
-  }
-  .btn-success:focus {
-    background-color: #b77df5;
-    border-color: #b77df5;
-  }
-  
-  .active-link {
-    /* Style for active link, e.g., change color or hide the button */
-    display: none; /* This will hide the button */
-  }
-  
-  /* Responsive adjustments for navbar */
-  @media (max-width: 768px) {
-    .navbar {
-      /* Adjust navbar styles for mobile devices */
-      /* Example: Change layout, increase padding, etc. */
-    }
-  
-    .btn-primary, .btn-success {
-      /* Adjust button sizes for better touch accessibility */
-      padding: 12px 18px;
-      font-size: 16px; /* Larger font size for buttons */
-    }
-  
-    /* Hide or re-style active links as needed */
-    .active-link {
-      /* Adjustments for active link on mobile */
-    }
-
-    body {
-        font-size: 16px; /* Larger base font size for readability */
-      }
-
-      .container {
-        width: 95%; /* More width for container */
-        padding: 10px; /* Reduced padding */
-      }
-
-.hamburger-menu {
-  cursor: pointer;
-  display: none; /* Hidden by default */
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
 }
 
-.hamburger-menu span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin-bottom: 5px;
-  background-color: #333;
+/* If the navbar is fixed or absolute positioned, add: */
+.navbar {
+  position: static;
 }
 
-@media (max-width: 768px) {
-  .hamburger-menu {
-    display: block; /* Show hamburger menu */
-  }
+  .gradient-background, .wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  z-index: 1; /* Lowest layer */
+}
 
-  .nav-items {
-    display: none; /* Hide navigation items */
-    /* Style for dropdown */
-  }
-  }
+
+.wave-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2; /* Above the gradient background */
 }

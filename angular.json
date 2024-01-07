@@ -30,16 +30,17 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "allowedCommonJsDependencies": ["quill"],
+            "allowedCommonJsDependencies": ["quill",
+            "@ckeditor/ckeditor5-build-classic"
+          ],
             "styles": [
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/scripts/navbar-animation.js"
+              "src/assets/scripts/scripts.js"
             ]
           },
           "configurations": {

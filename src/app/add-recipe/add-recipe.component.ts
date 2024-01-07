@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { Router } from '@angular/router'; // Import Router
@@ -7,7 +7,7 @@ import { AbstractControl } from '@angular/forms';
 
 export function imageUrlValidator(): Validators {
   return (control: AbstractControl): { [key: string]: any } | null => {
-    const urlRegex = /(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg))/i;
+    const urlRegex = /(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg|webp)(\?.*)?$)/i;
     const valid = urlRegex.test(control.value);
     return valid ? null : { 'invalidUrl': { value: control.value } };
   };
@@ -21,12 +21,31 @@ export function imageUrlValidator(): Validators {
 export class AddRecipeComponent implements OnInit {
   public Editor = ClassicEditor;
   recipeForm: FormGroup;
+  public editorStyle = {};
+
 
   editorConfig = {
     apiKey: 'gioa3daqcl5074u60ll57jjpe44minrpck44fu1t5x580zty', // Replace with your TinyMCE API key
-    plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+    plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount autoresize',
     toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
   };
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.adjustEditorHeight();
+  }
+
+  adjustEditorHeight() {
+    const headerHeight = 50; // Example, replace with your header's height
+    const footerHeight = 50; // Example, replace with your footer's height
+    const otherElementsHeight = 100; // Total height of other elements above/below the editor
+  
+    const availableHeight = window.innerHeight - headerHeight - footerHeight - otherElementsHeight;
+  
+    // Set the dynamic style
+    this.editorStyle = { height: `${availableHeight}px` };
+  }
+    
 
   constructor(
     private fb: FormBuilder,
@@ -35,12 +54,15 @@ export class AddRecipeComponent implements OnInit {
   ) {
     this.recipeForm = this.fb.group({
       name: ['', Validators.required],
-      details: ['', Validators.required], // Combined field
-      imageUrl: ['']
+      details: ['', Validators.required],
+      imageUrl: ['', imageUrlValidator()], // Use the imageUrlValidator here
     });
   }
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.adjustEditorHeight();
+  }
 
   onSubmit() {
     if (this.recipeForm.valid) {

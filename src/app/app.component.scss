@@ -1,0 +1,97 @@
+html, body {
+  overflow-y:auto; /* Hide vertical scrollbar */
+}
+
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .floating-buttons {
+    position: fixed;
+    top: 10px; /* Adjust the top margin */
+    left: 10px; /* Starting position from left */
+    right: 10px; /* Starting position from right */
+    display: flex;
+    justify-content: space-between; /* Space out buttons */
+    align-items: flex-start;
+    z-index: 1000;
+  }
+
+  #logoutButton {
+    background-color: #ff4b2b00; /* Red background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    display: flex;
+
+    margin-bottom: 10px
+  }
+  
+  #logoutButton .fa-sign-out-alt {
+    margin-right: 8px;
+  }
+  
+  
+  #addRecipeButton {
+    background-color: #d6f70100; /* Green background */
+    color: rgb(254, 254, 254); /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #addRecipeButton .fa-plus {
+    margin-right: 8px;
+  }
+
+
+  .floating-buttons a.btn, .floating-buttons button.btn {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight:lighter;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    transition: background-image 0.3s, box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+ z-index:1000;
+  }
+
+  .floating-buttons a.btn:hover, .floating-buttons button.btn:hover {
+    background-image: linear-gradient(to left, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .floating-buttons a.btn:active, .floating-buttons button.btn:active {
+    background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+  }
+  
+  
