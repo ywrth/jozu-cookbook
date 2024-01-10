@@ -21,9 +21,30 @@ form {
   padding-bottom: 20px;
 }
   
-  button {
-    margin-top: 10px;
-  }
+button[type="submit"] {
+  background-color: #3498db; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 10px;
+  display: inline-block; /* Aligns button properly */
+}
+
+button[type="submit"]:hover {
+  background-color: #2874a6; /* Slightly darker blue on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+button[type="submit"]:disabled {
+  background-color: #7f8c8d; /* Greyed out when disabled */
+  cursor: not-allowed;
+}
   
  
   .large-input {

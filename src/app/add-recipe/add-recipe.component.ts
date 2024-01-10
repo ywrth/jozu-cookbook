@@ -36,8 +36,8 @@ export class AddRecipeComponent implements OnInit {
   }
 
   adjustEditorHeight() {
-    const headerHeight = 50; // Example, replace with your header's height
-    const footerHeight = 50; // Example, replace with your footer's height
+    const headerHeight = 150; // Example, replace with your header's height
+    const footerHeight = 150; // Example, replace with your footer's height
     const otherElementsHeight = 100; // Total height of other elements above/below the editor
   
     const availableHeight = window.innerHeight - headerHeight - footerHeight - otherElementsHeight;
